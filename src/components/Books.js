@@ -8,7 +8,7 @@ function Books() {
       author: 'Suzanne Collins',
       chapter: 17,
       progress: 64,
-      category: 'Categories 1'
+      category: 'Categories 1',
     },
   ]);
 
@@ -18,9 +18,8 @@ function Books() {
   const handleDeleteOrEditBook = (id) => {
     if (editingBookId === id) {
       // Save the edited title
-      const updatedBooks = books.map((book) =>
-        book.id === id ? { ...book, title: editedTitle } : book
-      );
+      const updatedBooks = books.map((book) => (book.id === id
+        ? { ...book, title: editedTitle } : book));
       setBooks(updatedBooks);
       setEditingBookId(null);
       setEditedTitle('');
@@ -49,50 +48,79 @@ function Books() {
     }
   };
 
-    return (
-      <>
+  return (
+    <>
       {books.map((book) => (
-        <main className="book-parent-div">
-          <section key={book.id}  className="book-first-div">
-              <h3 className="margin-zero">{book.category}</h3>
-              <h2 className="margin-zero">
-                {editingBookId === book.id ? (
-                  <input
-                    type="text"
-                    value={editedTitle}
-                    onChange={(e) => setEditedTitle(e.target.value)}
-                  />
-                ) : (
-                  book.title
-                )}
-              </h2>
-              <h4 className="margin-zero">{book.author}</h4>
+        <main key={1} className="book-parent-div">
+          <section key={book.id} className="book-first-div">
+            <h3 className="margin-zero">{book.category}</h3>
+            <h2 className="margin-zero">
               {editingBookId === book.id ? (
-                <button onClick={() => handleDeleteOrEditBook(book.id)}>Save</button>
+                <input
+                  type="text"
+                  value={editedTitle}
+                  onChange={(e) => setEditedTitle(e.target.value)}
+                />
               ) : (
-                <ul>
-                  <li>Comments</li>
-                  <li onClick={() => handleDeleteOrEditBook(book.id)}>Remove</li>
-                  <li onClick={() => setEditingBookId(book.id)}>Edit</li>
-                </ul>
+                book.title
               )}
-            </section>
-            <section className="book-second-div">
-              <div className="book-second-div-ball">
-                <p className="ball" />
-                <div className="div-second-presentage">
-                  <p className="presentage">64%</p>
-                  <p>Completed</p>
-                </div>
+            </h2>
+            <h4 className="margin-zero">{book.author}</h4>
+            {editingBookId === book.id ? (
+              <button type="button" onClick={() => handleDeleteOrEditBook(book.id)}>Save</button>
+            ) : (
+              <ul>
+                <li className="button-add-remove">Comments</li>
+                <li>
+                  <button
+                    className="button-add-remove"
+                    type="button"
+                    onClick={() => handleDeleteOrEditBook(book.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        handleDeleteOrEditBook(book.id);
+                      }
+                    }}
+                  >
+                    Remove
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="button-add-remove"
+                    type="button"
+                    onClick={() => setEditingBookId(book.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        setEditingBookId(book.id);
+                      }
+                    }}
+                  >
+                    Edit
+                  </button>
+                </li>
+              </ul>
+            )}
+          </section>
+          <section className="book-second-div">
+            <div className="book-second-div-ball">
+              <p className="ball" />
+              <div className="div-second-presentage">
+                <p className="presentage">64%</p>
+                <p>Completed</p>
               </div>
-              <div>
-                <h3>Current Chapter</h3>
-                <h2>Chapter: {book.chapter}</h2>
-                <button type="button">Update Progress</button>
-              </div>
-              </section>
-              </main>
-        ))}
+            </div>
+            <div>
+              <h3>Current Chapter</h3>
+              <h2>
+                Chapter:
+                {book.chapter}
+              </h2>
+              <button className="button" type="button">Update Progress</button>
+            </div>
+          </section>
+        </main>
+      ))}
       <footer>
         <h1>Add New Book</h1>
         <form onSubmit={handleAddBook}>
@@ -104,7 +132,7 @@ function Books() {
             <option>Categories 3</option>
             <option>Categories 4</option>
           </select>
-          <button type="submit">Add Book</button>
+          <button className="button" type="submit">Add Book</button>
         </form>
       </footer>
     </>

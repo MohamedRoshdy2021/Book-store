@@ -1,7 +1,7 @@
-function Categories(props) {
+function Categories() {
   return (
     <div>
-      <h1>sdfdssssssssssssssssssssssssssssssssssssssssssss</h1>
+      <h1>Coming soon</h1>
     </div>
   );
 }
