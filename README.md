@@ -61,7 +61,7 @@
 
 ### Testing <a name="Testing"></a>
 
-- run this command " npm run test"
+- run this command " npm run test "
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -117,7 +117,7 @@ run this command: npm run start
 
 - will add a catogries component to choose between the different catogries 
 - will enhance the design in the next branch 
-- will make the app mobile more responsive for better UI to the user 
+- will make the version of the mobile more responsive for better UI to the user 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
