@@ -10,6 +10,8 @@ a {
 .head {
   display: flex;
   justify-content: space-between;
+  width: 94%;
+  margin: 0 auto;
 }
 
 nav {
