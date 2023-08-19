@@ -19,7 +19,6 @@
     - [Testing](#Testing)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
-  - [live-demo](#livelink)
   - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
@@ -68,10 +67,6 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LIVE DEMO -->
-
-## live demo <a name="livelink">Coming Soon</a>
-
-- coming soon
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
