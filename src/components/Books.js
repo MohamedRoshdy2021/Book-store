@@ -5,6 +5,7 @@ import { addBook, removeBook, editBook } from '../redux/Books/booksSlice';
 function Books() {
   const dispatch = useDispatch();
   const books = useSelector((state) => state.books);
+  console.log(books);
 
   const [editingBookId, setEditingBookId] = useState(null);
   const [editedTitle, setEditedTitle] = useState('');
@@ -22,10 +23,12 @@ function Books() {
   const handleAddBook = (event) => {
     event.preventDefault();
     const newBookTitle = event.target.elements.title.value;
+    const newauthor = event.target.elements.author.value;
     const newBookCategory = event.target.elements.category.value;
     if (newBookTitle && newBookCategory) {
       dispatch(
         addBook({
+          author: newauthor,
           id: Date.now(),
           title: newBookTitle,
           category: newBookCategory,
@@ -47,9 +50,7 @@ function Books() {
                   value={editedTitle}
                   onChange={(e) => setEditedTitle(e.target.value)}
                 />
-              ) : (
-                book.title
-              )}
+              ) : book.title}
             </h2>
             <h4 className="margin-zero">{book.author}</h4>
             {editingBookId === book.id ? (
@@ -113,6 +114,7 @@ function Books() {
         <h1>Add New Book</h1>
         <form onSubmit={handleAddBook}>
           <input type="text" placeholder="Book Title" className="input" name="title" />
+          <input type="text" placeholder="author Title" name="author" />
           <select name="category">
             <option>--choose Categories--</option>
             <option>Categories 1</option>
