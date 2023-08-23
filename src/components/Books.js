@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBook, removeBook, editBook } from '../redux/Books/booksSlice';
+import Button from './Buttons';
 
 function Books() {
   const dispatch = useDispatch();
@@ -19,23 +20,25 @@ function Books() {
     }
   };
 
-  const handleAddBook = (event) => {
-    event.preventDefault();
-    const newBookTitle = event.target.elements.title.value;
-    const newauthor = event.target.elements.author.value;
-    const newBookCategory = event.target.elements.category.value;
-    if (newBookTitle && newBookCategory) {
+  const [newBookTitle, setNewBookTitle] = useState('');
+  const [newAuthor, setNewAuthor] = useState('');
+  const [newBookCategory, setNewBookCategory] = useState('');
+
+  const handleAddBook = () => {
+    if (newBookTitle && newAuthor && newBookCategory) {
       dispatch(
         addBook({
-          author: newauthor,
           id: Date.now(),
           title: newBookTitle,
+          author: newAuthor,
           category: newBookCategory,
         }),
       );
+      setNewBookTitle('');
+      setNewAuthor('');
+      setNewBookCategory('');
     }
   };
-
   return (
     <>
       {books.map((book) => (
@@ -53,12 +56,12 @@ function Books() {
             </h2>
             <h4 className="margin-zero">{book.author}</h4>
             {editingBookId === book.id ? (
-              <button type="button" onClick={() => handleDeleteOrEditBook(book.id)}>Save</button>
+              <Button onClick={() => handleDeleteOrEditBook(book.id)}>Save</Button>
             ) : (
               <ul>
                 <li className="button-add-remove">Comments</li>
                 <li key={book.id}>
-                  <button
+                  <Button
                     className="button-add-remove"
                     type="button"
                     onClick={() => handleDeleteOrEditBook(book.id)}
@@ -69,10 +72,10 @@ function Books() {
                     }}
                   >
                     Remove
-                  </button>
+                  </Button>
                 </li>
                 <li key={book.id + 1}>
-                  <button
+                  <Button
                     className="button-add-remove"
                     type="button"
                     onClick={() => setEditingBookId(book.id)}
@@ -83,7 +86,7 @@ function Books() {
                     }}
                   >
                     Edit
-                  </button>
+                  </Button>
                 </li>
               </ul>
             )}
@@ -104,24 +107,31 @@ function Books() {
                 Chapter:
                 {book.chapter}
               </h2>
-              <button className="button" type="button">Update Progress</button>
+              <Button className="button" type="button">Update Progress</Button>
             </div>
           </section>
         </main>
       ))}
       <footer>
         <h1>Add New Book</h1>
-        <form onSubmit={handleAddBook}>
-          <input type="text" placeholder="Book Title" className="input" name="title" />
-          <input type="text" placeholder="author Title" name="author" />
-          <select name="category">
+        <form>
+          <input
+            type="text"
+            placeholder="Book Title"
+            className="input"
+            name="title"
+            value={newBookTitle}
+            onChange={(e) => setNewBookTitle(e.target.value)}
+          />
+          <input type="text" placeholder="author Title" name="author" value={newAuthor} onChange={(e) => setNewAuthor(e.target.value)} />
+          <select name="category" value={newBookCategory} onChange={(e) => setNewBookCategory(e.target.value)}>
             <option>--choose Categories--</option>
             <option>Categories 1</option>
             <option>Categories 2</option>
             <option>Categories 3</option>
             <option>Categories 4</option>
           </select>
-          <button className="button" type="submit">Add Book</button>
+          <Button onClick={handleAddBook}>Add Book</Button>
         </form>
       </footer>
     </>
