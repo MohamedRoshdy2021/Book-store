@@ -5,7 +5,6 @@ import { addBook, removeBook, editBook } from '../redux/Books/booksSlice';
 function Books() {
   const dispatch = useDispatch();
   const books = useSelector((state) => state.books);
-  console.log(books);
 
   const [editingBookId, setEditingBookId] = useState(null);
   const [editedTitle, setEditedTitle] = useState('');
