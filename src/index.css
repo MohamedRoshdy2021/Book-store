@@ -56,11 +56,23 @@ nav {
   align-items: center;
 }
 
-.ball {
+.ball-container {
   border-radius: 50%;
-  border: 3px solid rgb(0, 145, 255);
+  background-color: lightgray;
+  position: relative;
   width: 60px;
   height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ball-itself {
+  width: 50px;
+  height: 50px;
+  background-color: #3498db;
+  border-radius: 100%;
+  position: absolute;
 }
 
 .book-second-div-ball {

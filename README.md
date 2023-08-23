@@ -41,11 +41,13 @@
 1: React
 2: CSS
 3: linters
+4: Redux
 
 <details>
   <summary>Client</summary>
   <ul>
     <li><a href="https://React.dev/">React</a></li>
+    <li><a href="https://Redux.com/">Redux toolkit</a></li>
   </ul>
 </details>
 </details>
