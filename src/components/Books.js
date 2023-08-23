@@ -1,34 +1,21 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addBook, removeBook, editBook } from '../redux/Books/booksSlice';
 
 function Books() {
-  const [books, setBooks] = useState([
-    {
-      id: 1,
-      title: 'The hunger games',
-      author: 'Suzanne Collins',
-      chapter: 17,
-      progress: 64,
-      category: 'Categories 1',
-    },
-  ]);
+  const dispatch = useDispatch();
+  const books = useSelector((state) => state.books);
 
   const [editingBookId, setEditingBookId] = useState(null);
   const [editedTitle, setEditedTitle] = useState('');
 
   const handleDeleteOrEditBook = (id) => {
     if (editingBookId === id) {
-      // Save the edited title
-      const updatedBooks = books.map((book) => (book.id === id
-        ? { ...book, title: editedTitle } : book));
-      setBooks(updatedBooks);
+      dispatch(editBook({ id, title: editedTitle })); // Dispatch the action to edit book
       setEditingBookId(null);
       setEditedTitle('');
     } else {
-      // Start editing or delete
-      const updatedBooks = books.filter((book) => book.id !== id);
-      setBooks(updatedBooks);
-      setEditingBookId(id);
-      setEditedTitle('');
+      dispatch(removeBook(id)); // Dispatch the action to remove book
     }
   };
 
@@ -36,22 +23,21 @@ function Books() {
     event.preventDefault();
     const newBookTitle = event.target.elements.title.value;
     const newBookCategory = event.target.elements.category.value;
-
     if (newBookTitle && newBookCategory) {
-      const newBook = {
-        id: Date.now(),
-        title: newBookTitle,
-        category: newBookCategory,
-      };
-
-      setBooks([...books, newBook]);
+      dispatch(
+        addBook({
+          id: Date.now(),
+          title: newBookTitle,
+          category: newBookCategory,
+        }),
+      );
     }
   };
 
   return (
     <>
       {books.map((book) => (
-        <main key={1} className="book-parent-div">
+        <main key={books.id} className="book-parent-div">
           <section key={book.id} className="book-first-div">
             <h3 className="margin-zero">{book.category}</h3>
             <h2 className="margin-zero">
@@ -71,7 +57,7 @@ function Books() {
             ) : (
               <ul>
                 <li className="button-add-remove">Comments</li>
-                <li>
+                <li key={book.id}>
                   <button
                     className="button-add-remove"
                     type="button"
@@ -85,7 +71,7 @@ function Books() {
                     Remove
                   </button>
                 </li>
-                <li>
+                <li key={book.id + 1}>
                   <button
                     className="button-add-remove"
                     type="button"
@@ -104,7 +90,9 @@ function Books() {
           </section>
           <section className="book-second-div">
             <div className="book-second-div-ball">
-              <p className="ball" />
+              <div className="ball-container">
+                <div className="ball-itself" />
+              </div>
               <div className="div-second-presentage">
                 <p className="presentage">64%</p>
                 <p>Completed</p>
