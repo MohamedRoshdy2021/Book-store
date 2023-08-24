@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBook, removeBook, editBook } from '../redux/Books/booksSlice';
 import Button from './Buttons';
+import { nanoid } from 'nanoid'
 
 function Books() {
   const dispatch = useDispatch();
   const books = useSelector((state) => state.books);
-
+  const newitemid = nanoid()
   const [editingBookId, setEditingBookId] = useState(null);
   const [editedTitle, setEditedTitle] = useState('');
 
@@ -28,7 +29,7 @@ function Books() {
     if (newBookTitle && newAuthor && newBookCategory) {
       dispatch(
         addBook({
-          id: Date.now(),
+          id: newitemid,
           title: newBookTitle,
           author: newAuthor,
           category: newBookCategory,
@@ -42,8 +43,8 @@ function Books() {
   return (
     <>
       {books.map((book) => (
-        <main key={books.id} className="book-parent-div">
-          <section key={book.id} className="book-first-div">
+        <main key={book.id}  className="book-parent-div">
+          <section className="book-first-div">
             <h3 className="margin-zero">{book.category}</h3>
             <h2 className="margin-zero">
               {editingBookId === book.id ? (
@@ -107,7 +108,7 @@ function Books() {
                 Chapter:
                 {book.chapter}
               </h2>
-              <Button className="button" type="button">Update Progress</Button>
+              <button className="button" type="button">Update Progress</button>
             </div>
           </section>
         </main>
@@ -123,7 +124,9 @@ function Books() {
             value={newBookTitle}
             onChange={(e) => setNewBookTitle(e.target.value)}
           />
-          <input type="text" placeholder="author Title" name="author" value={newAuthor} onChange={(e) => setNewAuthor(e.target.value)} />
+          <input type="text"
+            placeholder="author Title"
+            name="author" value={newAuthor} onChange={(e) => setNewAuthor(e.target.value)} />
           <select name="category" value={newBookCategory} onChange={(e) => setNewBookCategory(e.target.value)}>
             <option>--choose Categories--</option>
             <option>Categories 1</option>
