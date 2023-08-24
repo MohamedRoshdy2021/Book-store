@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from 'nanoid';
 import { addBook, removeBook, editBook } from '../redux/Books/booksSlice';
+import Button from './Buttons';
 
 function Books() {
   const dispatch = useDispatch();
   const books = useSelector((state) => state.books);
-
+  const newitemid = nanoid();
   const [editingBookId, setEditingBookId] = useState(null);
   const [editedTitle, setEditedTitle] = useState('');
 
@@ -19,26 +21,30 @@ function Books() {
     }
   };
 
-  const handleAddBook = (event) => {
-    event.preventDefault();
-    const newBookTitle = event.target.elements.title.value;
-    const newBookCategory = event.target.elements.category.value;
-    if (newBookTitle && newBookCategory) {
+  const [newBookTitle, setNewBookTitle] = useState('');
+  const [newAuthor, setNewAuthor] = useState('');
+  const [newBookCategory, setNewBookCategory] = useState('');
+
+  const handleAddBook = () => {
+    if (newBookTitle && newAuthor && newBookCategory) {
       dispatch(
         addBook({
-          id: Date.now(),
+          id: newitemid,
           title: newBookTitle,
+          author: newAuthor,
           category: newBookCategory,
         }),
       );
+      setNewBookTitle('');
+      setNewAuthor('');
+      setNewBookCategory('');
     }
   };
-
   return (
     <>
       {books.map((book) => (
-        <main key={books.id} className="book-parent-div">
-          <section key={book.id} className="book-first-div">
+        <main key={book.id} className="book-parent-div">
+          <section className="book-first-div">
             <h3 className="margin-zero">{book.category}</h3>
             <h2 className="margin-zero">
               {editingBookId === book.id ? (
@@ -47,18 +53,16 @@ function Books() {
                   value={editedTitle}
                   onChange={(e) => setEditedTitle(e.target.value)}
                 />
-              ) : (
-                book.title
-              )}
+              ) : book.title}
             </h2>
             <h4 className="margin-zero">{book.author}</h4>
             {editingBookId === book.id ? (
-              <button type="button" onClick={() => handleDeleteOrEditBook(book.id)}>Save</button>
+              <Button onClick={() => handleDeleteOrEditBook(book.id)}>Save</Button>
             ) : (
               <ul>
                 <li className="button-add-remove">Comments</li>
                 <li key={book.id}>
-                  <button
+                  <Button
                     className="button-add-remove"
                     type="button"
                     onClick={() => handleDeleteOrEditBook(book.id)}
@@ -69,10 +73,10 @@ function Books() {
                     }}
                   >
                     Remove
-                  </button>
+                  </Button>
                 </li>
                 <li key={book.id + 1}>
-                  <button
+                  <Button
                     className="button-add-remove"
                     type="button"
                     onClick={() => setEditingBookId(book.id)}
@@ -83,7 +87,7 @@ function Books() {
                     }}
                   >
                     Edit
-                  </button>
+                  </Button>
                 </li>
               </ul>
             )}
@@ -111,16 +115,30 @@ function Books() {
       ))}
       <footer>
         <h1>Add New Book</h1>
-        <form onSubmit={handleAddBook}>
-          <input type="text" placeholder="Book Title" className="input" name="title" />
-          <select name="category">
+        <form>
+          <input
+            type="text"
+            placeholder="Book Title"
+            className="input"
+            name="title"
+            value={newBookTitle}
+            onChange={(e) => setNewBookTitle(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="author Title"
+            name="author"
+            value={newAuthor}
+            onChange={(e) => setNewAuthor(e.target.value)}
+          />
+          <select name="category" value={newBookCategory} onChange={(e) => setNewBookCategory(e.target.value)}>
             <option>--choose Categories--</option>
             <option>Categories 1</option>
             <option>Categories 2</option>
             <option>Categories 3</option>
             <option>Categories 4</option>
           </select>
-          <button className="button" type="submit">Add Book</button>
+          <Button onClick={handleAddBook}>Add Book</Button>
         </form>
       </footer>
     </>
