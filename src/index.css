@@ -1,5 +1,10 @@
-* {
+:root {
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 a {
@@ -18,6 +23,7 @@ a {
   align-items: center;
   width: 94%;
   margin: 0 auto;
+  background-color: #fff;
 }
 
 nav {
@@ -27,17 +33,24 @@ nav {
   color: #0290ff;
 }
 
+.project-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
 .book-parent-div {
   display: flex;
   align-items: start;
-  max-height: 9.5rem;
+  max-height: 10rem;
   gap: 2%;
   width: 92%;
   position: relative;
   top: 4rem;
-  border-top: 1px solid lightgray;
-  border-bottom: 1px solid lightgray;
+  border: 0.5px solid lightgray;
   margin: 1rem auto;
+  background-color: #fff;
+  padding: 0.4rem 1.4rem;
+  border-radius: 4px;
 }
 
 .book-first-div {
@@ -58,7 +71,9 @@ h3 {
 
 h2 {
   font-size: 1.8rem;
+  color: #121212;
   font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .list-btn {
