@@ -39,12 +39,12 @@ function Books() {
           <section className="book-first-div">
             <h3 className="margin-zero">{book.category}</h3>
             <h2 className="margin-zero">{book.title}</h2>
-            <h4 className="margin-zero">{book.author}</h4>
+            <h4 className="margin-zero list-btn" >{book.author}</h4>
             <ul>
-              <li className="button-add-remove">Comments</li>
+              <li className="list-btn">Comments</li>
               <li>
                 <Button
-                  className="button-add-remove"
+                  className="list-btn"
                   type="button"
                   onClick={() => handleDeleteOrEditBook(book.item_id)}
                 >
@@ -53,7 +53,7 @@ function Books() {
               </li>
               <li>
                 <Button
-                  className="button-add-remove"
+                  className="list-btn"
                   type="button"
                   onClick={() => handleDeleteOrEditBook(book.item_id)}
                 >
@@ -64,27 +64,25 @@ function Books() {
           </section>
           <section className="book-second-div">
             <div className="book-second-div-ball">
-              <div className="ball-container">
-                <div className="ball-itself" />
-              </div>
+                <div className="circular-progress" />
               <div className="div-second-presentage">
                 <p className="presentage">64%</p>
-                <p>Completed</p>
+                <p className='completed'>Completed</p>
               </div>
             </div>
             <div>
               <h3>Current Chapter</h3>
-              <h2>
+              <h2 className='chapter'>
                 Chapter:
                 {book.chapter}
               </h2>
-              <Button className="button" type="button" onClick={() => {}}>Update Progress</Button>
+              <button className="button" type="button" onClick={() => {}}>Update Progress</button>
             </div>
           </section>
         </main>
       ))}
       <footer>
-        <h1>Add New Book</h1>
+        <h2>Add New Book</h2>
         <form>
           <input
             type="text"
@@ -95,6 +93,7 @@ function Books() {
             onChange={(e) => setNewBookTitle(e.target.value)}
           />
           <input
+            className='input2'
             type="text"
             placeholder="author Title"
             name="author"
@@ -112,7 +111,7 @@ function Books() {
             <option>Categories 3</option>
             <option>Categories 4</option>
           </select>
-          <Button onClick={handleAddBook}>Add Book</Button>
+          <button className='button-add' onClick={handleAddBook}>Add Book</button>
         </form>
       </footer>
     </>

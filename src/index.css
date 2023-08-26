@@ -3,13 +3,19 @@
 }
 
 a {
-  color: black;
+  color: #121212;
   text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.catg {
+  opacity: 0.5;
 }
 
 .head {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 94%;
   margin: 0 auto;
 }
@@ -17,17 +23,21 @@ a {
 nav {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  color: rgb(0, 145, 255);
+  gap: 1.9rem;
+  color: #0290ff;
 }
 
 .book-parent-div {
   display: flex;
-  align-items: center;
+  align-items: start;
+  max-height: 9.5rem;
   gap: 2%;
-  width: 90%;
-  margin: 5rem auto 0;
+  width: 92%;
+  position: relative;
+  top: 4rem;
   border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  margin: 1rem auto;
 }
 
 .book-first-div {
@@ -35,11 +45,27 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: start;
-  margin-top: 1rem;
 }
 
 .margin-zero {
   margin: 0.3rem 0;
+}
+
+h3 {
+  opacity: 0.5;
+  font-size: 0.9rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.list-btn {
+  color: #4386bf;
+  font-size: 0.9rem;
+  border: none;
+  background-color: transparent;
 }
 
 .book-first-div ul {
@@ -50,29 +76,42 @@ nav {
 }
 
 .book-second-div {
-  width: 48%;
+  width: 42%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.ball-container {
+
+.circular-progress {
+  height: 65px;
+  width: 65px;
   border-radius: 50%;
-  background-color: lightgray;
-  position: relative;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: 5px solid rgb(0, 145, 255);
+  border-left-color: lightgray;
+  transform: rotate(35deg);
 }
 
-.ball-itself {
-  width: 50px;
-  height: 50px;
-  background-color: #3498db;
-  border-radius: 100%;
-  position: absolute;
+.completed {
+  opacity: 0.5;
+  font-size: 0.9rem;
+}
+
+.fa-user {
+  color: #548ef2;
+}
+
+
+.presentage {
+  position: relative;
+  color: rgb(0, 0, 0, 0.8);
+  font-size: 2rem;
+}
+
+.chapter {
+  font-size: 1rem;
+  font-weight: 300;
+  opacity: 0.8;
 }
 
 .book-second-div-ball {
@@ -88,26 +127,37 @@ nav {
   justify-content: center;
 }
 
-.presentage {
-  font-size: 1.8rem;
-}
-
 .div-second-presentage p {
   margin: 0.2rem;
 }
 
 .button {
   background-color: rgb(0, 145, 255);
-  padding: 0.4rem 0.9rem;
+  padding: 0.4rem 1rem;
   border: none;
   border-radius: 4px;
-  color: white;
+  color: lightgray;
+  cursor: pointer;
+}
+
+.button-add {
+  background-color: rgb(0, 145, 255);
+  padding: 0.4rem 0.6rem;
+  border: none;
+  border-radius: 4px;
+  color: lightgray;
   cursor: pointer;
 }
 
 footer {
   width: 90%;
   margin: 4rem auto 0;
+  padding: 3rem 0 0;
+}
+
+footer h2 {
+  color: #888888;
+  font-size: 1.3rem;
 }
 
 form {
@@ -117,13 +167,14 @@ form {
   margin: 1rem auto 0;
 }
 
-.input {
-  width: 60%;
+input,
+select {
+  background-color: transparent;
+  border: 0.5px solid lightgray;
+  opacity: 0.7;
+  border-radius: 4px;
 }
 
-.button-add-remove {
-  border: none;
-  background-color: transparent;
-  color: rgb(0, 145, 255);
-  cursor: pointer;
+.input {
+  width: 60%;
 }
