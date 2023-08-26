@@ -66,6 +66,7 @@ h2 {
   font-size: 0.9rem;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .book-first-div ul {
@@ -81,7 +82,6 @@ h2 {
   justify-content: space-between;
   align-items: center;
 }
-
 
 .circular-progress {
   height: 65px;
@@ -100,7 +100,6 @@ h2 {
 .fa-user {
   color: #548ef2;
 }
-
 
 .presentage {
   position: relative;
@@ -152,11 +151,11 @@ h2 {
 footer {
   width: 90%;
   margin: 4rem auto 0;
-  padding: 3rem 0 0;
+  padding: 3rem 0;
 }
 
 footer h2 {
-  color: #888888;
+  color: #888;
   font-size: 1.3rem;
 }
 

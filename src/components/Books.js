@@ -39,7 +39,7 @@ function Books() {
           <section className="book-first-div">
             <h3 className="margin-zero">{book.category}</h3>
             <h2 className="margin-zero">{book.title}</h2>
-            <h4 className="margin-zero list-btn" >{book.author}</h4>
+            <h4 className="margin-zero list-btn">{book.author}</h4>
             <ul>
               <li className="list-btn">Comments</li>
               <li>
@@ -64,15 +64,15 @@ function Books() {
           </section>
           <section className="book-second-div">
             <div className="book-second-div-ball">
-                <div className="circular-progress" />
+              <div className="circular-progress" />
               <div className="div-second-presentage">
                 <p className="presentage">64%</p>
-                <p className='completed'>Completed</p>
+                <p className="completed">Completed</p>
               </div>
             </div>
             <div>
               <h3>Current Chapter</h3>
-              <h2 className='chapter'>
+              <h2 className="chapter">
                 Chapter:
                 {book.chapter}
               </h2>
@@ -93,7 +93,7 @@ function Books() {
             onChange={(e) => setNewBookTitle(e.target.value)}
           />
           <input
-            className='input2'
+            className="input2"
             type="text"
             placeholder="author Title"
             name="author"
@@ -111,7 +111,7 @@ function Books() {
             <option>Categories 3</option>
             <option>Categories 4</option>
           </select>
-          <button className='button-add' onClick={handleAddBook}>Add Book</button>
+          <button className="button-add" type="button" onClick={handleAddBook}>Add Book</button>
         </form>
       </footer>
     </>

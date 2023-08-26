@@ -16,7 +16,7 @@ function App() {
           <nav>
             <h1>Book Store CMS</h1>
             <Link to="/">Books</Link>
-            <Link className='catg' to="/components/Categories">categories</Link>
+            <Link className="catg" to="/components/Categories">categories</Link>
           </nav>
           <div>
             <i className="fa-solid fa-user fa-xl" />
