@@ -41,7 +41,7 @@ nav {
 .book-parent-div {
   display: flex;
   align-items: start;
-  max-height: 10rem;
+  min-height: 10rem;
   gap: 2%;
   width: 92%;
   position: relative;
@@ -51,6 +51,7 @@ nav {
   background-color: #fff;
   padding: 0.4rem 1.4rem;
   border-radius: 4px;
+  opacity: 0.9;
 }
 
 .book-first-div {
