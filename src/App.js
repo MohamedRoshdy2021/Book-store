@@ -14,12 +14,12 @@ function App() {
       <BrowserRouter>
         <header className="head">
           <nav>
-            <h1>Book Store CMS</h1>
+            <h1 className="project-title">Book Store CMS</h1>
             <Link to="/">Books</Link>
-            <Link to="/components/Categories">categories</Link>
+            <Link className="catg" to="/components/Categories">categories</Link>
           </nav>
           <div>
-            <h2>icon</h2>
+            <i className="fa-solid fa-user fa-xl" />
           </div>
         </header>
         <Routes>

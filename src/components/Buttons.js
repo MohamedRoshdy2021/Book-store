@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Button({ onClick, children }) {
   return (
-    <button className="button" type="button" onClick={onClick}>
+    <button className="list-btn" type="button" onClick={onClick}>
       {children}
     </button>
   );
